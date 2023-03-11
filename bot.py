@@ -1,12 +1,16 @@
 from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
+from aiogram.dispatcher import Dispatcher, FSMContext
 from aiogram.utils import executor
 import logging
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ChatActions
+import os
+from uuid import uuid4
 
 import keyboards as kb
-from config import TOKEN, MANAGER_ID
-from database import Base, CallOrder, session
+from config import TOKEN, MANAGER_ID, PHOTO_DIR
+from database import Base, CallOrder, session, Car
+from datetime import datetime
+
 
 Base.metadata.create_all(session.get_bind())
 
@@ -25,9 +29,9 @@ my_logger.addHandler(console_handler)
 
 
 @dp.message_handler(commands=['start'])
-async def process_hi5_command(message: types.Message):
+async def process_start_command(message: types.Message):
     """ Обработчик запуска бота. """
-    
+
     my_logger.info("User %s started the bot.",
                    message.from_user.first_name)
     await message.reply(f"Здравствуйте, {message.from_user.first_name}! Я помогу вам арендовать автомобиль. "
@@ -37,7 +41,7 @@ async def process_hi5_command(message: types.Message):
 @dp.message_handler(lambda message: message.text == 'Адрес')
 async def process_address_command(message: types.Message):
     """ Обработчик кнопки 'Адрес'. """
-    
+
     my_logger.info("User %s chose the show adress.",
                    message.from_user.first_name)
     map_url = "https://yandex.ru/maps/?um=constructor%3Af85d033fb7a55272dc36551a140bf294f3187a5da834e41040e6b5eecd3b2f19&source=constructor"
@@ -84,12 +88,89 @@ async def process_contact(message: types.Message):
 
 async def save_call_order(session, user_name: str, phone_number: str):
     """ Сохранение потенциального клиента в db """
+    my_logger.info("User %s insert order call to database.",
+                   user_name)
 
-    call_order = CallOrder(user_name=user_name, phone_number=phone_number)
+    date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    call_order = CallOrder(user_name=user_name,
+                           phone_number=phone_number,
+                           date=date)
     session.add(call_order)
     session.flush()
     session.commit()
     session.close()
+
+
+@dp.message_handler(commands=['create_car'])
+async def create_car_handler(message: types.Message):
+    """ Создание автомобиля в db """
+
+    my_logger.info("Сar create started.")
+    await message.answer('Пожалуйста, загрузите фотографию')
+
+@dp.message_handler(content_types=types.ContentType.PHOTO)
+async def save_car_photo(message: types.Message):
+    my_logger.info("Сar photo saved.")
+    # Получаем объект файла фотографии
+    photo = message.photo[-1]
+    filename = str(uuid4()) + ".jpg"
+    filepath = os.path.join(PHOTO_DIR, filename)
+    await photo.download(destination_dir=PHOTO_DIR)
+    car = Car(photo=filename)
+
+    session.add(car)
+    session.commit()
+
+    await message.answer('Фотография сохранена')
+    await ask_car_brand(message.from_user.id)
+
+
+async def ask_car_brand(user_id):
+    await bot.send_message(user_id, "Введите марку автомобиля:")
+
+
+async def ask_year(user_id, car_brand):
+    await bot.send_message(user_id, f"Введите год выпуска для автомобиля {car_brand}:")
+
+
+async def ask_transmission(user_id, car_brand, year):
+    await bot.send_message(user_id, f"Введите тип коробки передач для автомобиля {car_brand} {year} года выпуска:")
+
+
+async def ask_air_cold(user_id, car_brand, year, transmission):
+    await bot.send_message(user_id, f"Введите наличие кондиционера для автомобиля {car_brand} {year} года выпуска, тип коробки передач: {transmission}:")
+
+
+
+@dp.message_handler()
+async def process_car_info(message: types.Message):
+    # Обработчик сообщений для заполнения полей автомобиля
+    user_id = message.from_user.id
+    car = session.query(Car).order_by(Car.id.desc()).first()
+
+    if not car.car_brand:
+        car.car_brand = message.text
+        session.commit()
+        await ask_year(user_id, car.car_brand)
+
+    elif not car.year:
+        try:
+            year = int(message.text)
+            car.year = year
+            session.commit()
+            await ask_transmission(user_id, car.car_brand, year)
+        except ValueError:
+            await bot.send_message(user_id, "Введите год в виде числа, например: 2022")
+
+    elif not car.transmission:
+        car.transmission = message.text
+        session.commit()
+        await ask_air_cold(user_id, car.car_brand, car.year, car.transmission)
+
+    elif not car.air_cold:
+        car.air_cold = message.text
+        session.commit()
+        await bot.send_message(user_id, "Данные сохранены")
 
 
 @dp.message_handler(commands=['help'])

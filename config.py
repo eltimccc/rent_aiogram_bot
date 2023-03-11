@@ -1,4 +1,9 @@
 import logging
+import os
+
+PHOTO_DIR = "cars_photo"
+if not os.path.exists(PHOTO_DIR):
+    os.makedirs(PHOTO_DIR)
 
 TOKEN = '6068983644:AAHL507NB2YFBaKxFfY61ijT3oNHtIJgEds'
 MANAGER_ID = 228888741
