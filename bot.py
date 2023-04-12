@@ -49,11 +49,11 @@ async def process_address_command(message: types.Message):
 
     my_logger.info("User %s chose the show adress.",
                    message.from_user.first_name)
-    map_url = "https://yandex.ru/maps/?um=constructor%3Af85d033fb7a55272dc36551a140bf294f3187a5da834e41040e6b5eecd3b2f19&source=constructor"
+    map_url = "https://yandex.ru/profile/48449848565"
     await message.reply("Мы находимся по адресу:\n"
                         "город Псков\nулица Новаторов, дом 2\n"
                         '\n'
-                        f"Ссылка на карту: {map_url}")
+                        f"Ссылка: {map_url}")
 
 
 @dp.message_handler(commands=['rules'])
@@ -148,7 +148,7 @@ async def process_callback_button(callback_query: types.CallbackQuery):
         with open(os.path.join(PHOTO_DIR, car.photo), 'rb') as photo_file:
             await bot.send_photo(chat_id=callback_query.message.chat.id,
                                  photo=photo_file,
-                                 caption=f"Марка: {car.car_brand}\nГод выпуска: {car.year}\nКоробка передач: {car.transmission}\nЦена: {car.air_cold}")
+                                 caption=f"Марка: {car.car_brand}\nГод выпуска: {car.year}\nКоробка передач: {car.transmission}\nКондиционер: {car.air_cold}")
     else:
         text = "К сожалению, информация об этом автомобиле отсутствует в нашей базе данных."
         await bot.send_message(chat_id=callback_query.message.chat.id,
