@@ -5,6 +5,7 @@ import logging
 from aiogram.types import ChatActions
 import os
 from uuid import uuid4
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 import keyboards as kb
 from config import TOKEN, MANAGER_ID, PHOTO_DIR
@@ -31,14 +32,18 @@ my_logger.addHandler(console_handler)
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
     """ Обработчик запуска бота. """
+    my_logger.info("User %s started the bot.", message.from_user.first_name)
 
-    my_logger.info("User %s started the bot.",
-                   message.from_user.first_name)
-    await message.reply(f"Здравствуйте, {message.from_user.first_name}! Я помогу вам арендовать автомобиль. "
-                        "Нажмите на кнопки ниже, чтобы выбрать действие.", reply_markup=kb.menu)
+    with open(f"{PHOTO_DIR}/logo.jpg", "rb") as photo_file:
+        await bot.send_photo(
+            chat_id=message.chat.id,
+            photo=photo_file,
+            caption=f"""Здравствуйте, {message.from_user.first_name}!
+Я помогу вам арендовать автомобиль.
+Воспользуйтесь меню, чтобы выбрать действие.""")
 
 
-@dp.message_handler(lambda message: message.text == 'Адрес')
+@dp.message_handler(commands=['adds'])
 async def process_address_command(message: types.Message):
     """ Обработчик кнопки 'Адрес'. """
 
@@ -51,7 +56,7 @@ async def process_address_command(message: types.Message):
                         f"Ссылка на карту: {map_url}")
 
 
-@dp.message_handler(lambda message: message.text == 'Условия')
+@dp.message_handler(commands=['rules'])
 async def get_conditions(message: types.Message):
     """ Обработчик кнопки 'Условия'. """
 
@@ -68,22 +73,36 @@ async def get_conditions(message: types.Message):
     )
 
 
-@dp.message_handler(content_types=['contact'])
-async def process_contact(message: types.Message):
-    """ Обработчик кнопки 'Заказ звонка'. """
-
+@dp.message_handler(commands=['callback'])
+async def process_callback_command(message: types.Message):
+    """ Обработчик команды '/callback'. """
     my_logger.info("User %s chose the order call.",
                    message.from_user.first_name)
+    reply_markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True, one_time_keyboard=True)
+    button_contact = types.KeyboardButton(
+        'Отправить контакт', request_contact=True)
+    reply_markup.add(button_contact)
+    await bot.send_message(chat_id=message.chat.id,
+                           text='Для заказа звонка, пожалуйста, отправьте Ваш контакт.',
+                           reply_markup=reply_markup)
+
+
+@dp.message_handler(content_types=['contact'])
+async def process_contact(message: types.Message):
+    """ Обработчик отправки контакта пользователем. """
+    my_logger.info("User %s sent contact.", message.from_user.first_name)
     contact = message.contact
     user_name = message.from_user.first_name
     phone_number = contact.phone_number
     await save_call_order(session,
                           user_name=user_name,
                           phone_number=phone_number)
-    await bot.send_message(
-        chat_id=MANAGER_ID,
-        text=f"Потенциальный клиент {user_name} "
-        f"просит перезвонить по номеру телефона {phone_number}")
+    await bot.send_message(chat_id=message.chat.id,
+                           text='Мы Вам перезвоним в ближайшее время!')
+    await bot.send_message(chat_id=MANAGER_ID,
+                           text=f"Потенциальный клиент {user_name} "
+                                f"просит перезвонить по номеру телефона {phone_number}")
 
 
 async def save_call_order(session, user_name: str, phone_number: str):
@@ -101,6 +120,43 @@ async def save_call_order(session, user_name: str, phone_number: str):
     session.close()
 
 
+@dp.message_handler(commands=['cars'])
+async def show_cars(message: types.Message):
+    """Показать список марок автомобилей."""
+    cars = session.query(Car).all()
+    car_brands = [car.car_brand for car in cars]
+
+    keyboard = types.InlineKeyboardMarkup()
+    buttons = [types.InlineKeyboardButton(text=brand,
+                                          callback_data=brand)
+               for brand in car_brands]
+    keyboard.add(*buttons)
+
+    text = "Выберите марку автомобиля:"
+    await bot.send_message(chat_id=message.chat.id,
+                           text=text,
+                           reply_markup=keyboard)
+
+
+@dp.callback_query_handler(lambda c: c.data)
+async def process_callback_button(callback_query: types.CallbackQuery):
+    """Обработчик кнопок выбора марки автомобиля."""
+    car_brand = callback_query.data
+    car = session.query(Car).filter_by(car_brand=car_brand).first()
+
+    if car:
+        with open(os.path.join(PHOTO_DIR, car.photo), 'rb') as photo_file:
+            await bot.send_photo(chat_id=callback_query.message.chat.id,
+                                 photo=photo_file,
+                                 caption=f"Марка: {car.car_brand}\nГод выпуска: {car.year}\nКоробка передач: {car.transmission}\nЦена: {car.air_cold}")
+    else:
+        text = "К сожалению, информация об этом автомобиле отсутствует в нашей базе данных."
+        await bot.send_message(chat_id=callback_query.message.chat.id,
+                               text=text)
+
+    await bot.answer_callback_query(callback_query.id)
+
+
 @dp.message_handler(commands=['create_car'])
 async def create_car_handler(message: types.Message):
     """ Создание автомобиля в db """
@@ -108,14 +164,14 @@ async def create_car_handler(message: types.Message):
     my_logger.info("Сar create started.")
     await message.answer('Пожалуйста, загрузите фотографию')
 
+
 @dp.message_handler(content_types=types.ContentType.PHOTO)
 async def save_car_photo(message: types.Message):
     my_logger.info("Сar photo saved.")
-    # Получаем объект файла фотографии
     photo = message.photo[-1]
-    filename = str(uuid4()) + ".jpg"
+    filename = f"file_{str(uuid4())}.jpg"
     filepath = os.path.join(PHOTO_DIR, filename)
-    await photo.download(destination_dir=PHOTO_DIR)
+    await photo.download(destination=filepath)
     car = Car(photo=filename)
 
     session.add(car)
@@ -141,10 +197,8 @@ async def ask_air_cold(user_id, car_brand, year, transmission):
     await bot.send_message(user_id, f"Введите наличие кондиционера для автомобиля {car_brand} {year} года выпуска, тип коробки передач: {transmission}:")
 
 
-
 @dp.message_handler()
 async def process_car_info(message: types.Message):
-    # Обработчик сообщений для заполнения полей автомобиля
     user_id = message.from_user.id
     car = session.query(Car).order_by(Car.id.desc()).first()
 
@@ -171,20 +225,6 @@ async def process_car_info(message: types.Message):
         car.air_cold = message.text
         session.commit()
         await bot.send_message(user_id, "Данные сохранены")
-
-
-@dp.message_handler(commands=['help'])
-async def process_help_command(message: types.Message):
-    """ /help. """
-
-    await message.reply("Я могу рассказать информацю об огранизации ПрокатПсков!")
-
-
-@dp.message_handler()
-async def echo_message(msg: types.Message):
-    """ Эхо. """
-
-    await bot.send_message(msg.from_user.id, msg.text)
 
 
 if __name__ == '__main__':
