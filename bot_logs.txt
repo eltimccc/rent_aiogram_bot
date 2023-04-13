@@ -1,0 +1,2 @@
+2023-04-13 08:51:26,197 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-13 08:51:48,404 - BOT_LOGGER - INFO - User Denis chose the rental conditions.

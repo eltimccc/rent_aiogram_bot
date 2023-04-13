@@ -21,12 +21,15 @@ dp = Dispatcher(bot)
 
 my_logger = logging.getLogger('BOT_LOGGER')
 my_logger.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
-formatter = logging.Formatter(
-    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
+file_handler = logging.FileHandler('bot_logs.txt')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(formatter)
 my_logger.addHandler(console_handler)
+my_logger.addHandler(file_handler)
 
 
 @dp.message_handler(commands=['start'])
@@ -49,7 +52,7 @@ async def process_address_command(message: types.Message):
 
     my_logger.info("User %s chose the show adress.",
                    message.from_user.first_name)
-    map_url = "https://yandex.ru/profile/48449848565"
+    map_url = "https://clck.ru/3484XH"
     await message.reply("Мы находимся по адресу:\n"
                         "город Псков\nулица Новаторов, дом 2\n"
                         '\n'
@@ -123,6 +126,8 @@ async def save_call_order(session, user_name: str, phone_number: str):
 @dp.message_handler(commands=['cars'])
 async def show_cars(message: types.Message):
     """Показать список марок автомобилей."""
+    my_logger.info("User %s chose the show all cars.",
+                   message.from_user.first_name)
     cars = session.query(Car).all()
     car_brands = [car.car_brand for car in cars]
 
@@ -141,6 +146,7 @@ async def show_cars(message: types.Message):
 @dp.callback_query_handler(lambda c: c.data)
 async def process_callback_button(callback_query: types.CallbackQuery):
     """Обработчик кнопок выбора марки автомобиля."""
+
     car_brand = callback_query.data
     car = session.query(Car).filter_by(car_brand=car_brand).first()
 
