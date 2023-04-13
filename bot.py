@@ -1,27 +1,33 @@
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher, FSMContext
 from aiogram.utils import executor
-import logging
 from aiogram.types import ChatActions
 import os
+from dotenv import load_dotenv
 from uuid import uuid4
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 import keyboards as kb
-from config import TOKEN, MANAGER_ID, PHOTO_DIR
+from config import PHOTO_DIR
 from database import Base, CallOrder, session, Car
 from datetime import datetime
+import logging
+import logging.config
+import smtplib
+from email.mime.text import MIMEText
 
+load_dotenv()
 
 Base.metadata.create_all(session.get_bind())
 
-bot = Bot(TOKEN)
+bot = Bot(os.getenv('TOKEN'))
 dp = Dispatcher(bot)
 
 
 my_logger = logging.getLogger('BOT_LOGGER')
 my_logger.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
 console_handler.setFormatter(formatter)
@@ -52,11 +58,10 @@ async def process_address_command(message: types.Message):
 
     my_logger.info("User %s chose the show adress.",
                    message.from_user.first_name)
-    map_url = "https://clck.ru/3484XH"
     await message.reply("Мы находимся по адресу:\n"
                         "город Псков\nулица Новаторов, дом 2\n"
                         '\n'
-                        f"Ссылка: {map_url}")
+                        f"Ссылка: {os.getenv('LINK')}")
 
 
 @dp.message_handler(commands=['rules'])
@@ -71,7 +76,7 @@ async def get_conditions(message: types.Message):
         "1. Возраст - от 23-х лет;\n"
         "2. Наличие водительского удостоверения категории B\n"
         'со стажем от 3-х лет;\n'
-        "3. Залог за автомобиль - 6000 рублей;\n"
+        "3. Залог за автомобиль - от 6000 рублей;\n"
         "4. Аренда возможна только на территории Российской Федерации.",
     )
 
@@ -91,6 +96,25 @@ async def process_callback_command(message: types.Message):
                            reply_markup=reply_markup)
 
 
+async def send_contact_to_email(user_name, phone_number):
+    """Отправляет контакт на email"""
+    try:
+        text = f"Потенциальный клиент {user_name} просит перезвонить по номеру телефона {phone_number}"
+        msg = MIMEText(text)
+        msg['Subject'] = 'Новый клиент'
+        msg['From'] = os.getenv('FROM_EMAIL')
+        msg['To'] = os.getenv('TO_EMAIL')
+        smtp_server = smtplib.SMTP(os.getenv('SMTP_EMAIL'), 587)
+        smtp_server.ehlo()
+        smtp_server.starttls()
+        smtp_server.login(os.getenv('FROM_EMAIL'), os.getenv('EMAIL_PASSWORD'))
+        smtp_server.sendmail(os.getenv('FROM_EMAIL'), [os.getenv('TO_EMAIL')], msg.as_string())
+    except Exception as e:
+        my_logger.error("Error while sending email: %s", e)
+    finally:
+        smtp_server.quit()
+
+
 @dp.message_handler(content_types=['contact'])
 async def process_contact(message: types.Message):
     """ Обработчик отправки контакта пользователем. """
@@ -103,9 +127,10 @@ async def process_contact(message: types.Message):
                           phone_number=phone_number)
     await bot.send_message(chat_id=message.chat.id,
                            text='Мы Вам перезвоним в ближайшее время!')
-    await bot.send_message(chat_id=MANAGER_ID,
+    await bot.send_message(chat_id=os.getenv('MANAGER_ID'),
                            text=f"Потенциальный клиент {user_name} "
                                 f"просит перезвонить по номеру телефона {phone_number}")
+    await send_contact_to_email(user_name, phone_number)
 
 
 async def save_call_order(session, user_name: str, phone_number: str):
@@ -154,7 +179,11 @@ async def process_callback_button(callback_query: types.CallbackQuery):
         with open(os.path.join(PHOTO_DIR, car.photo), 'rb') as photo_file:
             await bot.send_photo(chat_id=callback_query.message.chat.id,
                                  photo=photo_file,
-                                 caption=f"Марка: {car.car_brand}\nГод выпуска: {car.year}\nКоробка передач: {car.transmission}\nКондиционер: {car.air_cold}")
+                                 caption=(f"Марка: {car.car_brand}\n"
+                                          f"Год выпуска: {car.year} "
+                                          f"Коробка передач: {car.transmission}\n"
+                                          f"Кондиционер: {car.air_cold}\n"
+                                          f"Стоимость от {car.price_from} рублей в сутки."))
     else:
         text = "К сожалению, информация об этом автомобиле отсутствует в нашей базе данных."
         await bot.send_message(chat_id=callback_query.message.chat.id,
@@ -200,7 +229,14 @@ async def ask_transmission(user_id, car_brand, year):
 
 
 async def ask_air_cold(user_id, car_brand, year, transmission):
-    await bot.send_message(user_id, f"Введите наличие кондиционера для автомобиля {car_brand} {year} года выпуска, тип коробки передач: {transmission}:")
+    await bot.send_message(user_id, f"Введите наличие кондиционера для автомобиля {car_brand} {year} года выпуска, тип коробки передач {transmission}:")
+
+
+async def ask_price_from(user_id, car_brand, year, transmission, air_cold):
+    message = ("Введите самую низкую цену проката в сутки для автомобиля {} {} года выпуска,"
+               "тип коробки передач {}, кондиционер {}:"
+               .format(car_brand, year, transmission, air_cold))
+    await bot.send_message(user_id, message)
 
 
 @dp.message_handler()
@@ -218,20 +254,28 @@ async def process_car_info(message: types.Message):
             year = int(message.text)
             car.year = year
             session.commit()
-            await ask_transmission(user_id, car.car_brand, year)
+            await ask_transmission(user_id, car.car_brand,
+                                   year)
         except ValueError:
             await bot.send_message(user_id, "Введите год в виде числа, например: 2022")
 
     elif not car.transmission:
         car.transmission = message.text
         session.commit()
-        await ask_air_cold(user_id, car.car_brand, car.year, car.transmission)
+        await ask_air_cold(user_id, car.car_brand,
+                           car.year, car.transmission)
 
     elif not car.air_cold:
         car.air_cold = message.text
         session.commit()
-        await bot.send_message(user_id, "Данные сохранены")
+        await ask_price_from(user_id, car.car_brand,
+                             car.year, car.transmission,
+                             car.air_cold)
 
+    elif not car.price_from:
+        car.price_from = message.text
+        session.commit()
+        await bot.send_message(user_id, "Данные сохранены")
 
 if __name__ == '__main__':
     executor.start_polling(dp)

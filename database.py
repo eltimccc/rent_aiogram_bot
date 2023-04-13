@@ -24,6 +24,7 @@ class Car(Base):
     year = Column(String)
     transmission = Column(String)
     air_cold = Column(String)
+    price_from = Column(Integer)
 
 
 Base.metadata.create_all(engine)

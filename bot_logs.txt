@@ -1,2 +1,185 @@
 2023-04-13 08:51:26,197 - BOT_LOGGER - INFO - User Denis started the bot.
 2023-04-13 08:51:48,404 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 09:20:30,364 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 09:20:30,394 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 09:20:36,776 - BOT_LOGGER - INFO - Сar create started.
+2023-04-13 09:20:45,049 - BOT_LOGGER - INFO - Сar photo saved.
+2023-04-13 09:34:34,593 - BOT_LOGGER - INFO - Сar create started.
+2023-04-13 09:34:44,294 - BOT_LOGGER - INFO - Сar photo saved.
+2023-04-13 09:38:00,440 - BOT_LOGGER - INFO - Сar create started.
+2023-04-13 09:38:06,661 - BOT_LOGGER - INFO - Сar photo saved.
+2023-04-13 09:42:06,463 - BOT_LOGGER - INFO - Сar create started.
+2023-04-13 09:42:12,556 - BOT_LOGGER - INFO - Сar photo saved.
+2023-04-13 09:43:58,837 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:45:24,861 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:45:48,534 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:46:09,058 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:46:27,616 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:46:49,229 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 09:50:24,209 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 09:50:27,116 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-13 09:50:37,258 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 09:50:39,194 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 09:50:39,194 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 09:58:45,726 - BOT_LOGGER - INFO - Сar create started.
+2023-04-13 09:58:51,004 - BOT_LOGGER - INFO - Сar photo saved.
+2023-04-13 10:00:50,505 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:03:25,573 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:15:02,822 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 10:27:08,954 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:28:10,751 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:28:19,098 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:29:30,477 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:29:54,770 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 10:30:21,527 - BOT_LOGGER - INFO - User SKISI2K started the bot.
+2023-04-13 10:30:30,730 - BOT_LOGGER - INFO - User SKISI2K started the bot.
+2023-04-13 10:30:33,695 - BOT_LOGGER - INFO - User SKISI2K started the bot.
+2023-04-13 10:30:35,622 - BOT_LOGGER - INFO - User SKISI2K started the bot.
+2023-04-13 10:32:18,475 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-13 11:21:09,496 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 11:22:35,619 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 11:22:37,472 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 11:22:39,936 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 11:22:39,937 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:19:15,421 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:19:15,421 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:41:48,321 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:41:48,321 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:41:52,714 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:41:52,714 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:41:56,115 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:41:56,115 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:41:56,127 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:41:56,127 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:46:44,820 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:46:44,820 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:46:44,831 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:46:44,831 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:48:22,698 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:48:22,698 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:48:31,373 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:48:31,373 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:48:35,049 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:48:35,049 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:48:35,053 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:48:35,053 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:56:43,251 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:56:43,251 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:56:44,968 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:56:44,968 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:56:47,431 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:56:47,431 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:56:47,434 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:56:47,434 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:59:16,516 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:16,516 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:16,882 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:16,882 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:19,306 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:19,306 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 12:59:21,290 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:59:21,290 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 12:59:24,524 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:59:24,524 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 12:59:24,539 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 12:59:24,539 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:01:18,396 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:01:18,396 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:01:19,803 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 13:01:19,803 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 13:01:22,214 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:01:22,214 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:01:24,495 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:01:24,495 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:01:24,540 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:01:24,540 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:02:47,323 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-13 13:02:47,323 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-13 13:02:50,106 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:02:50,106 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:02:52,701 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:02:52,701 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:02:52,703 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:02:52,703 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:04:39,993 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:04:39,993 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:04:41,427 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:04:41,427 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:04:43,767 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:04:43,767 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:04:43,769 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:04:43,769 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:05:48,524 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:05:48,524 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:05:49,834 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:05:49,834 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:05:51,808 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:05:51,808 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:05:51,810 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:05:51,810 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:06:25,972 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 13:06:25,972 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-13 13:06:27,584 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:06:27,584 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:06:30,081 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:06:30,081 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:06:30,084 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:06:30,084 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:08:26,525 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:08:26,525 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:08:30,643 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:08:30,643 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:08:33,279 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:08:33,279 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:08:33,280 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:08:33,280 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:08:34,534 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:08:34,534 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:09:42,196 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:09:42,196 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:09:43,888 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:09:43,888 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:09:46,305 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:09:46,305 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:09:46,319 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:09:46,319 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:09:47,599 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:09:47,599 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:10:07,299 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:10:07,299 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:10:09,230 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:10:09,230 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:10:10,927 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:10:10,927 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:10:10,954 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:10:10,954 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:10:12,292 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:10:12,292 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:11:54,079 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:11:54,079 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-13 13:11:55,845 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:11:55,845 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:11:57,783 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:11:57,783 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:11:57,817 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:11:57,817 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:11:59,103 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:11:59,103 - BOT_LOGGER - ERROR - Error while sending email: STARTTLS extension not supported by server.
+2023-04-13 13:13:52,009 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:13:52,009 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:13:53,398 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:13:53,398 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:13:55,356 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:13:55,356 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:13:55,382 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:13:55,382 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:13:58,918 - BOT_LOGGER - ERROR - Error while sending email: (535, b'5.7.0 NEOBHODIM parol prilozheniya https://help.mail.ru/mail/security/protection/external / Application password is REQUIRED')
+2023-04-13 13:13:58,918 - BOT_LOGGER - ERROR - Error while sending email: (535, b'5.7.0 NEOBHODIM parol prilozheniya https://help.mail.ru/mail/security/protection/external / Application password is REQUIRED')
+2023-04-13 13:14:36,763 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:14:36,763 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-13 13:14:39,605 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:14:39,605 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-13 13:14:41,406 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:14:41,406 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-13 13:14:41,408 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-13 13:14:41,408 - BOT_LOGGER - INFO - User Denis insert order call to database.
