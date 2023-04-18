@@ -130,3 +130,6 @@ dmypy.json
 /cars_photo
 .cars_photo
 cars_photo/
+*.db
+my_database.db
+my_database1.db
