@@ -6,15 +6,18 @@ import os
 from dotenv import load_dotenv
 from uuid import uuid4
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from sqlalchemy import Text
 
 import keyboards as kb
 from config import PHOTO_DIR
-from database import Base, CallOrder, session, Car
+from database import Base, CallOrder, Tariff, session, Car
 from datetime import datetime
 import logging
 import logging.config
 import smtplib
 from email.mime.text import MIMEText
+from aiogram.dispatcher.filters.state import State, StatesGroup
+
 
 load_dotenv()
 
@@ -108,7 +111,8 @@ async def send_contact_to_email(user_name, phone_number):
         smtp_server.ehlo()
         smtp_server.starttls()
         smtp_server.login(os.getenv('FROM_EMAIL'), os.getenv('EMAIL_PASSWORD'))
-        smtp_server.sendmail(os.getenv('FROM_EMAIL'), [os.getenv('TO_EMAIL')], msg.as_string())
+        smtp_server.sendmail(os.getenv('FROM_EMAIL'), [
+                             os.getenv('TO_EMAIL')], msg.as_string())
     except Exception as e:
         my_logger.error("Error while sending email: %s", e)
     finally:
@@ -190,6 +194,14 @@ async def process_callback_button(callback_query: types.CallbackQuery):
                                text=text)
 
     await bot.answer_callback_query(callback_query.id)
+
+
+### ДОБАВЛЕНИЕ ТАРИФОв ###
+
+
+
+
+### Коней добавления тарифов ###
 
 
 @dp.message_handler(commands=['create_car'])
@@ -276,6 +288,7 @@ async def process_car_info(message: types.Message):
         car.price_from = message.text
         session.commit()
         await bot.send_message(user_id, "Данные сохранены")
+
 
 if __name__ == '__main__':
     executor.start_polling(dp)

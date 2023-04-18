@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, create_engine, DateTime, text
+from sqlalchemy import Column, ForeignKey, Integer, String, create_engine, DateTime, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
-
+from sqlalchemy.orm import relationship
 
 engine = create_engine('sqlite:///my_database.db')
 Base = declarative_base()
@@ -25,6 +25,23 @@ class Car(Base):
     transmission = Column(String)
     air_cold = Column(String)
     price_from = Column(Integer)
+
+    tariff = relationship("Tariff",
+                          uselist=False, 
+                          back_populates="car")
+
+class Tariff(Base):
+    __tablename__ = 'car_tariffs'
+
+    id = Column(Integer,
+                primary_key=True)
+    car_id = Column(Integer,
+                    ForeignKey('cars.id'),
+                    nullable=False)
+    price_1 = Column(Integer)
+    deposit = Column(Integer)
+
+    car = relationship("Car", back_populates="tariff")
 
 
 Base.metadata.create_all(engine)
