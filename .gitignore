@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 /cars_photo
 .cars_photo
+cars_photo/
