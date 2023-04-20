@@ -114,7 +114,7 @@ async def send_contact_to_email(user_name, phone_number):
         smtp_server.sendmail(os.getenv('FROM_EMAIL'), [
                              os.getenv('TO_EMAIL')], msg.as_string())
     except Exception as e:
-        my_logger.error("Error while sending email: %s", e)
+        my_logger.error("Ошибка отправки почты: %s", e)
     finally:
         smtp_server.quit()
 
