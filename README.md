@@ -39,14 +39,14 @@ pip install -r requirements.txt
 Необходимо заполнить .env файл, пример:
 
 ```
-ADMIN_TGID = <000>                    # Telegram id администратора
-TO_EMAIL= <manager_email@email.ru>    # Элетронная почта, куда отправляется заявка
-FROM_EMAIL= <manager_email@email.ru>  # Элетронная почта, от кого направляется заявка
-EMAIL_PASSWORD= <my_pass>             # Пароль от почты
-SMTP_EMAIL= <smtp.email.ru>           # Адрес SMTP сервера почты
-MANAGER_ID = <111>                    # Telegram id менеджера, куда придет заявка
-TOKEN = <0121asdDD>                   # Токен телеграм бота
-LINK = <https://clck.ru/...>          # Ссылка на профиль организации
+ADMIN_TGID = <admin_id>    # Telegram id администратора
+TO_EMAIL= <to_email>       # Элетронная почта, куда отправляется заявка
+FROM_EMAIL= <from_email>   # Элетронная почта, от кого направляется заявка
+EMAIL_PASSWORD= <my_pass>  # Пароль от почты
+SMTP_EMAIL= <smtp>         # Адрес SMTP сервера почты
+MANAGER_ID = <manager_id>  # Telegram id менеджера, куда придет заявка
+TOKEN = <bot_token>        # Токен телеграм бота
+LINK = <company_link>      # Ссылка на профиль организации
 ```
 
 #### Файл базы данных SQLite3 создастся при первом запуске бота.
