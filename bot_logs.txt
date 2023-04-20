@@ -315,3 +315,41 @@
 2023-04-18 17:37:06,357 - BOT_LOGGER - INFO - User Denis sent contact.
 2023-04-18 17:37:06,359 - BOT_LOGGER - INFO - User Denis insert order call to database.
 2023-04-18 17:37:06,359 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-20 10:47:52,528 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-20 10:47:52,528 - BOT_LOGGER - INFO - User Denis started the bot.
+2023-04-20 10:48:02,291 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-20 10:48:02,291 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-20 10:48:04,853 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-20 10:48:04,853 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-20 10:48:07,025 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 10:48:07,025 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 10:48:10,835 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 10:48:10,835 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 10:48:14,795 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-20 10:48:14,795 - BOT_LOGGER - INFO - User Denis chose the order call.
+2023-04-20 10:48:16,829 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-20 10:48:16,829 - BOT_LOGGER - INFO - User Denis sent contact.
+2023-04-20 10:48:16,833 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-20 10:48:16,833 - BOT_LOGGER - INFO - User Denis insert order call to database.
+2023-04-20 11:08:53,033 - BOT_LOGGER - INFO - User Алексей started the bot.
+2023-04-20 11:08:53,033 - BOT_LOGGER - INFO - User Алексей started the bot.
+2023-04-20 11:09:09,902 - BOT_LOGGER - INFO - User Алексей chose the show all cars.
+2023-04-20 11:09:09,902 - BOT_LOGGER - INFO - User Алексей chose the show all cars.
+2023-04-20 11:09:25,548 - BOT_LOGGER - INFO - User Алексей chose the rental conditions.
+2023-04-20 11:09:25,548 - BOT_LOGGER - INFO - User Алексей chose the rental conditions.
+2023-04-20 11:09:44,610 - BOT_LOGGER - INFO - User Алексей chose the show adress.
+2023-04-20 11:09:44,610 - BOT_LOGGER - INFO - User Алексей chose the show adress.
+2023-04-20 11:13:44,105 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-20 11:13:44,105 - BOT_LOGGER - INFO - User Denis chose the show adress.
+2023-04-20 11:13:48,954 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-20 11:13:48,954 - BOT_LOGGER - INFO - User Denis chose the rental conditions.
+2023-04-20 11:13:59,229 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 11:13:59,229 - BOT_LOGGER - INFO - User Denis chose the show all cars.
+2023-04-20 11:14:05,208 - BOT_LOGGER - INFO - User Алексей started the bot.
+2023-04-20 11:14:05,208 - BOT_LOGGER - INFO - User Алексей started the bot.
+2023-04-20 11:14:08,381 - BOT_LOGGER - INFO - User Алексей chose the order call.
+2023-04-20 11:14:08,381 - BOT_LOGGER - INFO - User Алексей chose the order call.
+2023-04-20 11:14:18,578 - BOT_LOGGER - INFO - User Алексей sent contact.
+2023-04-20 11:14:18,578 - BOT_LOGGER - INFO - User Алексей sent contact.
+2023-04-20 11:14:18,579 - BOT_LOGGER - INFO - User Алексей insert order call to database.
+2023-04-20 11:14:18,579 - BOT_LOGGER - INFO - User Алексей insert order call to database.
